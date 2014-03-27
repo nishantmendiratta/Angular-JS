@@ -1,0 +1,18 @@
+<!-- Example of using directives and data binding -->
+<!-- References Youtube - https://www.youtube.com/watch?v=i9MHigUZKEM , GIT - https://github.com/nishantmendiratta/Angular-JS -->
+<!DOCTYPE html>
+<!-- ng-app is the built in angular directive, Once the script is loaded this will initialize the angular app -->
+<html ng-app>
+<head>
+	<script type="text/javascript" src="js/Angular.min.js"></script>
+	<title>Learning Angular js</title>
+</head>
+<body>
+	<div class="container">
+		<!-- ng-model is the directive, Making an empty view model and filling it with the name property-->
+			Name : <input type="text" ng-model="name"/>
+			<!-- Data binding expression,To write out value of ng-model(name) -->
+			{{ name }} 
+	</div>
+</body>
+</html>
