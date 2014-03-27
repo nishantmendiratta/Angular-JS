@@ -1,0 +1,20 @@
+<!-- Iterating with the ng-repeat Directive -->
+<!-- References Youtube - https://www.youtube.com/watch?v=i9MHigUZKEM , GIT - https://github.com/nishantmendiratta/Angular-JS -->
+<!DOCTYPE html>
+<!-- ng-app is the built in angular directive, Once the script is loaded this will initialize the angular app -->
+<html ng-app>
+<head>
+	<script type="text/javascript" src="js/Angular.min.js"></script>
+	<title>Learning Angular js</title>
+</head>
+<body>
+	<!-- ng-init to give some initialization data -->
+	<div class="container" ng-init="names=['Dave','Napur','Heedy','Shriva']">
+		<h3>Looping with the ng-repeat Directive</h3>
+		<ul>
+			<!-- Using Directive ng-repeat to display list with loop -->
+			<li ng-repeat="name in names">{{ name }}</li>
+		</ul>
+	</div>
+</body>
+</html>
