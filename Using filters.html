@@ -1,0 +1,28 @@
+<!-- Using Filters -->
+<!-- References Youtube - https://www.youtube.com/watch?v=i9MHigUZKEM , GIT - https://github.com/nishantmendiratta/Angular-JS , API - http://docs.angularjs.org/guide/filter -->
+<!DOCTYPE html>
+<!-- ng-app is the built in angular directive, Once the script is loaded this will initialize the angular app -->
+<html ng-app>
+<head>
+	<script type="text/javascript" src="js/Angular.min.js"></script>
+	<title>Learning Angular js</title>
+</head>
+<body>
+	<!-- ng-init to give some initialization data -->
+	<div class="container" ng-init="names=[{name:'John Smith',city:'Phoenix'},{name:'John Doe',city:'New York'},{name:'Jane Doe',city:'San Francisco'}]">
+		<h3>Looping with the ng-repeat Directive</h3>
+		<ul>
+			<!-- Using Directive ng-repeat to display list with loop -->
+			<!-- Pipe is the seperator b/w the directive and the filter(uppercase) this will change data to uppercase -->
+			<li ng-repeat="personName in names | orderBy:'name'">{{ personName.name | uppercase }}</li>
+		</ul>
+
+		<!-- ng-model is the directive, Making an empty view model and filling it with the nameText property-->
+		<input type="text" ng-model="nameText"/>
+		<ul>
+			<!-- Firstly filter the customer with data provided in text box then these result are filtered again and ordered by name property -->
+			<li ng-repeat="personName in names | filter:nameText | orderBy:'name'">{{ personName.name }} - {{ personName.city | lowercase}}</li>
+		</ul>
+	</div>
+</body>
+</html>
