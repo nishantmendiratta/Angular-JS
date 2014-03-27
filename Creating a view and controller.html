@@ -1,0 +1,35 @@
+<!-- Creating custom Controller and tied it into a View -->
+<!-- References Youtube - https://www.youtube.com/watch?v=i9MHigUZKEM , GIT - https://github.com/nishantmendiratta/Angular-JS -->
+<!DOCTYPE html>
+<!-- ng-app is the built in angular directive, Once the script is loaded this will initialize the angular app -->
+<html ng-app>
+<head>
+	<script type="text/javascript" src="js/Angular.min.js"></script>
+	<title>Learning Angular js</title>
+</head>
+<body>
+	<!-- Defining the controller to be used. This SimpleController automatically tie up with SimpleController($scope) function -->
+	<!-- Scope is within this div -->
+	<div class="container" ng-controller="SimpleController">
+		<h3>Adding a Simple Controller</h3>
+		<ul>
+			<!-- Bound with scope of ng-controller(SimpleController), customers access $scope -->
+			<li ng-repeat="cust in customers">{{ cust.name }} - {{ cust.city }}</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		//Function is tied up ng-controller(SimpleController), $scope is injected dynamically 
+		function SimpleController ($scope) {
+			//Scope is empty, We are adding customers property to scope 
+			$scope.customers = [
+				{name:'Dave Jones',city:'Phoenix'},
+				{name:'Jamie Riley',city:'Atlanta'},
+				{name:'Heedy Wahlin',city:'Chandler'},
+				{name:'Thomas Winter',city:'Seattle'}
+			];
+		}
+
+	</script>
+</body>
+</html>
