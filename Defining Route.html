@@ -1,0 +1,78 @@
+		<!-- Creating custom Controller with external function in a Module and tied it into a View -->
+		<!-- Easier to prototype things -->
+		<!-- References Youtube - https://www.youtube.com/watch?v=i9MHigUZKEM , GIT - https://github.com/nishantmendiratta/Angular-JS -->
+		<!DOCTYPE html>
+		<!-- ng-app is the built in angular directive, Once the script is loaded this will initialize the angular app -->
+		<html ng-app="demoApp">
+		<head>
+			<script type="text/javascript" src="js/angular1.0.7.min.js"></script>
+			<title>Learning Angular js</title>
+		</head>
+		<body>
+			
+			<div >
+				 <ul class="nav">
+					<li><a href="#partial1"> View 1 </a></li>
+					<li><a href="#partial2"> View 2 </a></li>
+				</ul>
+				<!-- placeholder for views -->
+				<div ng-view=""></div>
+			</div>
+
+			<script type="text/javascript">
+				//Module name is demoApp and empty array(No dependencies) is for dependency injection
+				var demoApp = angular.module('demoApp',[]);
+
+				//Define module routes
+				demoApp.config(function ($routeProvider){
+					$routeProvider
+						//Default route
+						.when('/',
+						     {
+							controller : 'SimpleController',
+							templateUrl : 'Partials/View1.html',
+
+						     })
+						.when('/partial2',
+						     {
+							controller : 'SimpleController2',
+							templateUrl : 'Partials/View2.html',
+
+						     })
+						.otherwise({redirectTo : '/' });
+
+				});
+
+				//Using controllers to define a controller(SimpleController) and we have anonymous function as second parameter
+				demoApp.controller('SimpleController2',function ($scope) {
+					//Scope is empty, We are adding customers property to scope 
+
+					$scope.customers = [
+						{name:'Dave Jones',city:'Phoenix'},
+						{name:'Jamie Riley',city:'Atlanta'},
+						{name:'Heedy Wahlin',city:'Chandler'},
+						{name:'Thomas Winter',city:'Seattle'}
+					];
+
+					$scope.addCustomers = function (){
+						$scope.customers.push({ name:$scope.newCustomer.name , city: $scope.newCustomer.city });
+						$scope.message = 'This is View 1';
+					};
+
+
+					$scope.message = 'This is View';
+
+				});
+
+				
+				demoApp.controller('SimpleController', function ($scope) {
+	
+					$scope.message = 'This is View 1';
+					
+				});
+
+
+
+			</script>
+		</body>
+		</html>
